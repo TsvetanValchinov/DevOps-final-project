@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-project-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: devops-project
+  template:
+    metadata:
+      labels:
+        app: devops-project
+    spec:
+      containers:
+      - name: python-app
+        # ВАЖНО: Смени това с твоето име!
+        image: DOCKER_USER_PLACEHOLDER/devops-final-project:latest
+        ports:
+        - containerPort: 5000
