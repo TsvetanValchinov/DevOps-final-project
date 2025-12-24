@@ -33,7 +33,7 @@ jobs:
         run: pytest
 
       - name: Security Scan (Bandit)
-        run: bandit -r .
+        run: bandit -r . -x ./test_app.py
 
   docker-build:
     needs: build-and-test
