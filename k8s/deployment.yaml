@@ -15,6 +15,6 @@ spec:
       containers:
       - name: python-app
         # ВАЖНО: Смени това с твоето име!
-        image: DOCKER_USER_PLACEHOLDER/devops-final-project:latest
+        image: docker_user_placeholder/devops-final-project:latest
         ports:
         - containerPort: 5000
