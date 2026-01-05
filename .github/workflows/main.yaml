@@ -70,7 +70,6 @@ jobs:
         if: github.event_name != 'pull_request'
         run: |
           docker push ${{ env.DOCKER_IMAGE }}:${{ github.sha }}
-          # Слагаме и 'latest' таг
           docker tag ${{ env.DOCKER_IMAGE }}:${{ github.sha }} ${{ env.DOCKER_IMAGE }}:latest
           docker push ${{ env.DOCKER_IMAGE }}:latest
 
@@ -78,7 +77,7 @@ jobs:
   deploy-to-k8s:
     needs: docker-build
     if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -89,8 +88,12 @@ jobs:
           
             sed -i 's|latest|${{ github.sha }}|g' k8s/deployment.yaml
 
-      - name: Update K8s Manifests
+      - name: Deploy to Local Kubernetes
         run: |
-          sed -i "s|image: .*|image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}|g" k8s/deployment.yaml
-          cat k8s/deployment.yaml # Show what will be deployed, because there is no real cluster
+          kubectl apply -f k8s/deployment.yaml
+          kubectl apply apply -f k8s/service.yaml
+          kubectl rollout restart deployment/devops-project-app
+          kubectl rollout status deployment/devops-project-app
+          #sed -i "s|image: .*|image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}|g" k8s/deployment.yaml
+          #cat k8s/deployment.yaml # Show what will be deployed, because there is no real cluster
           # kubectl apply -f k8s/ ----> this would be the real command, instead of cat
