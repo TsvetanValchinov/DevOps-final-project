@@ -78,6 +78,9 @@ jobs:
     needs: docker-build
     if: github.ref == 'refs/heads/main'
     runs-on: self-hosted
+    defaults:
+      run:
+        shell: bash
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
