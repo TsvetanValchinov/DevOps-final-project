@@ -7,7 +7,6 @@ spec:
     app: devops-project
   ports:
     - protocol: TCP
-      port: 80
+      port: 3000
       targetPort: 5000
-      nodePort: 30007
   type: LoadBalancer
