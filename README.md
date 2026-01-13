@@ -1,6 +1,6 @@
 # DevOps Final Project: Automated Software Delivery Pipeline
 
-Този проект демонстрира CI/CD процес за Python приложение, покриващ целия жизнен цикъл на софтуера - от написването на кода до деплоймънта в Kubernetes.
+Проектът демонстрира CI/CD процес за Python приложение, покриващ целия жизнен цикъл на софтуера - от написването на кода до деплоймънта в Kubernetes.
 
 [CI/CD Pipeline](https://github.com/TsvetanValchinov/DevOps-final-project/actions/workflows/main.yaml)
 
