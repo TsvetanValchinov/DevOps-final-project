@@ -95,6 +95,3 @@ jobs:
           kubectl apply apply -f k8s/service.yaml
           kubectl rollout restart deployment/devops-project-app
           kubectl rollout status deployment/devops-project-app
-          #sed -i "s|image: .*|image: ${{ env.DOCKER_IMAGE }}:${{ github.sha }}|g" k8s/deployment.yaml
-          #cat k8s/deployment.yaml # Show what will be deployed, because there is no real cluster
-          # kubectl apply -f k8s/ ----> this would be the real command, instead of cat
