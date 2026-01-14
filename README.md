@@ -50,7 +50,7 @@ graph TD
 * **Continuous Delivery (CD):** Автоматично обновяване на Kubernetes манифестите чрез sed заместване.
 * **Kubernetes:** Дефиниране на Infrastructure as Code чрез YAML манифести (Deployment & Service).
 
-## 🛠️ Технологичен Стак
+## 🛠️ Технологии
 
 * **Language:** Python 3.9 (Flask)
 * **Containerization:** Docker
